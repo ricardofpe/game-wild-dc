@@ -1,6 +1,6 @@
 <template>
   <div class="font-sans antialiased text-gray-900">
-    <Hero />
+<Hero/>
     <Rules v-if="showRules" />
   </div>
 </template>

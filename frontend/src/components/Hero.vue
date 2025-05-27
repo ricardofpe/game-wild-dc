@@ -1,42 +1,50 @@
 <template>
-  <section
-    class="bg-gradient-to-br from-blue-900 to-purple-800 text-white py-16 md:py-24 relative overflow-hidden"
-  >
-    <div
-      class="absolute top-0 left-0 w-full h-full pointer-events-none"
-      aria-hidden="true"
+  <main class="bg-gray-900 text-white">
+    <section
+      class="relative py-24 md:py-32 lg:py-40 overflow-hidden"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1920 300"
-        fill="none"
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-indigo-900 to-purple-700 opacity-75"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-full"
+        aria-hidden="true"
       >
-        <path
-          d="M0 0C200 100 500 120 800 80C1100 40 1400 60 1600 120C1800 180 1920 300 1920 300H0V0Z"
-          fill="#2C3E50"
-        />
-      </svg>
-    </div>
+        <svg
+          class="fill-current text-gray-900"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1920 300"
+        >
+          <path
+            d="M0 0C200 100 500 120 800 80C1100 40 1400 60 1600 120C1800 180 1920 300 1920 300H0V0Z"
+          />
+        </svg>
+      </div>
 
-    <div class="container mx-auto text-center relative z-10">
-      <h1
-        class="text-4xl md:text-5xl font-extrabold mb-4 glitch"
-        data-text="Game Wild!"
-      >
-        Game Wild!
-      </h1>
-      <p class="text-base md:text-lg mb-8 tracking-wide">{{ subtitle }}</p>
-      <a
-        :href="discordLink"
-        target="_blank"
-        class="discord-button group"
-      >
-        <span class="discord-icon"><PhDiscordLogo /></span>
-        {{ buttonText }}
-        <span class="discord-arrow">→</span>
-      </a>
-    </div>
-  </section>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center">
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 glitch"
+            data-text="Game Wild!"
+          >
+            Game Wild!
+          </h1>
+          <p class="text-lg md:text-xl lg:text-2xl mb-12 font-medium tracking-wide">
+            {{ subtitle }}
+          </p>
+          <a
+            :href="discordLink"
+            target="_blank"
+            class="discord-button group"
+          >
+            <span class="discord-icon"><PhDiscordLogo /></span>
+            {{ buttonText }}
+            <span class="discord-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">
