@@ -77,6 +77,7 @@ import { PhCheckCircle } from "@phosphor-icons/vue";
 <style scoped>
 .game-controller {
   position: relative;
+  margin: auto;
   width: 250px;
   height: 166px;
   background-color: #374151;

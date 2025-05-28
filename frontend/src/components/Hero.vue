@@ -33,7 +33,7 @@
             {{ subtitle }}
           </p>
           <a
-            :href="discordLink"
+            href="https://discord.com/channels/1377076282495602738"
             target="_blank"
             class="discord-button group"
           >
@@ -54,7 +54,6 @@ import { PhDiscordLogo } from "@phosphor-icons/vue";
 const subtitle = ref<string>(
   "Join players of all types, make new friends, and explore a world of fun in our Discord community!"
 );
-const discordLink = ref<string>("https://discord.gg/");
 const buttonText = ref<string>("Join the Discord Server");
 </script>
 
