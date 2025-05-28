@@ -34,19 +34,20 @@ The backend uses **HMAC (Hash-based Message Authentication Code)** to secure API
   - Request path (e.g., `/route`)
   - Current timestamp in milliseconds
   - Shared secret key (`HMAC_SECRET_KEY`)
+  - Body of requisition
 
 ### ✅ Signature Generation (Frontend):
 
 1. Concatenate the following string:
 
 ```
-<HTTP_METHOD>|<REQUEST_PATH>|<TIMESTAMP>
+<TIMESTAMP>:<HTTP_METHOD>:<REQUEST_PATH>:<BODY>
 ```
 
 Example:
 
 ```
-GET|/route|1722345678901
+1722345678901:GET:/route:
 ```
 
 2. Use HMAC SHA-256 to sign this string with the `HMAC_SECRET_KEY`.
@@ -72,6 +73,7 @@ Headers: X-HMAC-Signature: <signature>
 | HTTP Method     | GET                          |
 | Request Path    | /route                       |
 | Timestamp       | 1722345678901                |
+| Body       | {}                |
 | String to Sign  | GET|/route|1722345678901| 
 | HMAC Key        | your_secret_key              |
 | Generated Hash  | abc123... (sha256 hash)      |
