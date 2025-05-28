@@ -126,6 +126,7 @@ DISCORD_BOT_TOKEN=your_discord_bot_token
 DISCORD_SERVER_ID=your_discord_server_id
 PORT=3000
 HMAC_SECRET_KEY=your_secret_key
+API_URL=your_api_url
 ```
 
 4. Run the backend in development mode:

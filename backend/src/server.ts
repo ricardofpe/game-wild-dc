@@ -97,6 +97,19 @@ app.get('/api/discord-server-info', verifyHmac, async (req: Request, res: Respon
   }
 });
 
+app.get('/ping', (req: Request, res: Response) => {
+  res.status(200).send('pong');
+});
+
+function keepAlive() {
+  setInterval(() => {
+    axios.get(`${process.env.API_URL}/ping`)
+      .then(() => console.log('Pinged server to keep it alive'))
+      .catch(() => console.error('Failed to ping server'));
+  }, 2 * 60 * 1000);
+}
+
 app.listen(port, () => {
   console.log(`Backend server running on port ${port}`);
+  keepAlive();
 });
