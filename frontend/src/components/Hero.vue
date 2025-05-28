@@ -1,47 +1,33 @@
 <template>
-  <main class="bg-gray-900 text-white">
-    <section
-      class="relative py-24 md:py-32 lg:py-40 overflow-hidden"
-    >
-      <div
-        class="absolute inset-0 bg-gradient-to-br from-indigo-900 to-purple-700 opacity-75"
-      ></div>
-      <div
-        class="absolute bottom-0 left-0 w-full"
-        aria-hidden="true"
-      >
-        <svg
-          class="fill-current text-gray-900"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1920 300"
-        >
-          <path
-            d="M0 0C200 100 500 120 800 80C1100 40 1400 60 1600 120C1800 180 1920 300 1920 300H0V0Z"
-          />
-        </svg>
-      </div>
+  <main class="bg-gray-900 text-white relative overflow-hidden">
+    <div class="absolute w-full h-full">
+      <div class="animate-blob blur-3xl opacity-30 bg-purple-600 absolute top-0 -left-4 w-72 h-72 rounded-full mix-blend-multiply"></div>
+      <div class="animate-blob animation-delay-2000 blur-3xl opacity-30 bg-yellow-600 absolute -bottom-8 left-20 w-72 h-72 rounded-full mix-blend-multiply"></div>
+      <div class="animate-blob animation-delay-4000 blur-3xl opacity-30 bg-pink-600 absolute top-0 right-20 w-72 h-72 rounded-full mix-blend-multiply"></div>
+    </div>
 
+    <section class="relative py-24 md:py-32 lg:py-40">
       <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center">
-          <h1
-            class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 glitch"
-            data-text="Game Wild!"
-          >
+        <div class="text-center" data-aos="fade-up">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 glitch" data-text="Game Wild!">
             Game Wild!
           </h1>
-          <p class="text-lg md:text-xl lg:text-2xl mb-12 font-medium tracking-wide">
+          <p class="text-lg md:text-xl lg:text-2xl mb-12 font-medium tracking-wide max-w-3xl mx-auto leading-relaxed">
             {{ subtitle }}
           </p>
-          <a
-            href="https://discord.com/channels/1377076282495602738"
-            target="_blank"
-            class="discord-button group"
-          >
-            <span class="discord-icon"><PhDiscordLogo /></span>
+          <a href="https://discord.com/channels/1377076282495602738" target="_blank"
+            class="discord-button group hover:scale-105 transform transition-all duration-300 ease-out">
+            <span class="discord-icon"><PhDiscordLogo weight="fill" /></span>
             {{ buttonText }}
             <span class="discord-arrow">→</span>
           </a>
         </div>
+      </div>
+
+      <div class="absolute bottom-0 left-0 w-full">
+        <svg class="fill-current text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 300">
+          <path d="M0 0C200 100 500 120 800 80C1100 40 1400 60 1600 120C1800 180 1920 300 1920 300H0V0Z" />
+        </svg>
       </div>
     </section>
   </main>
@@ -62,206 +48,125 @@ const buttonText = ref<string>("Join the Discord Server");
   background-color: #5865f2;
   color: #ffffff;
   font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 28px;
+  border-radius: 12px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   text-decoration: none;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
-}
-
-@media (min-width: 768px) {
-  .discord-button {
-    padding: 12px 24px;
-    gap: 10px;
-    font-size: 1.125rem;
-  }
-}
-
-.discord-button:hover {
-  background-color: #4752c4;
-  transform: translateY(-2px);
-}
-
-.discord-icon {
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-}
-
-.discord-arrow {
-  transition: transform 0.2s ease;
-  display: inline-block;
-}
-
-.discord-button:hover .discord-arrow {
-  transform: translateX(5px);
-}
-
-.glitch {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(88, 101, 242, 0.4);
+  font-size: 1.125rem;
   position: relative;
   overflow: hidden;
 }
 
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
+.discord-button::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: inherit;
-  text-shadow: -1px 0 red, 1px 0 blue;
-  clip: rect(0, 900px, 0, 0);
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: 0.5s;
 }
 
-.glitch::before {
-  left: 2px;
-  text-shadow: -1px 0 red, 0 0 blue;
-  animation: glitch-anim 2s infinite linear alternate-reverse;
+.discord-button:hover::after {
+  transform: translateX(100%);
 }
 
-.glitch::after {
-  left: -2px;
-  text-shadow: 1px 0 blue, 0 0 red;
-  animation: glitch-anim2 2s infinite linear alternate-reverse;
+.discord-button:hover {
+  background-color: #4752c4;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2), 0 15px 20px -3px rgba(88, 101, 242, 0.6);
 }
 
-@keyframes glitch-anim {
+.discord-icon {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.discord-arrow {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.discord-button:hover .discord-arrow {
+  transform: translateX(8px);
+}
+
+.glitch {
+  position: relative;
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  animation: glitch 500ms infinite;
+}
+
+@keyframes glitch {
   0% {
-    clip: rect(26px, 9999px, 22px, 0);
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
   }
-  5% {
-    clip: rect(35px, 9999px, 61px, 0);
-  }
-  10% {
-    clip: rect(6px, 9999px, 43px, 0);
+  14% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
   }
   15% {
-    clip: rect(15px, 9999px, 10px, 0);
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
   }
-  20% {
-    clip: rect(45px, 9999px, 16px, 0);
-  }
-  25% {
-    clip: rect(22px, 9999px, 14px, 0);
-  }
-  30% {
-    clip: rect(23px, 9999px, 37px, 0);
-  }
-  35% {
-    clip: rect(31px, 9999px, 29px, 0);
-  }
-  40% {
-    clip: rect(31px, 9999px, 37px, 0);
-  }
-  45% {
-    clip: rect(26px, 9999px, 29px, 0);
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
   }
   50% {
-    clip: rect(41px, 9999px, 25px, 0);
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+      0.05em 0 0 rgba(0, 255, 0, 0.75),
+      0 -0.05em 0 rgba(0, 0, 255, 0.75);
   }
-  55% {
-    clip: rect(4px, 9999px, 41px, 0);
-  }
-  60% {
-    clip: rect(44px, 9999px, 10px, 0);
-  }
-  65% {
-    clip: rect(18px, 9999px, 20px, 0);
-  }
-  70% {
-    clip: rect(32px, 9999px, 21px, 0);
-  }
-  75% {
-    clip: rect(46px, 9999px, 18px, 0);
-  }
-  80% {
-    clip: rect(2px, 9999px, 47px, 0);
-  }
-  85% {
-    clip: rect(4px, 9999px, 20px, 0);
-  }
-  90% {
-    clip: rect(42px, 9999px, 35px, 0);
-  }
-  95% {
-    clip: rect(16px, 9999px, 20px, 0);
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+      0.05em 0 0 rgba(0, 255, 0, 0.75),
+      0 -0.05em 0 rgba(0, 0, 255, 0.75);
   }
   100% {
-    clip: rect(42px, 9999px, 29px, 0);
+    text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
   }
 }
 
-@keyframes glitch-anim2 {
+@keyframes animate-blob {
   0% {
-    clip: rect(24px, 9999px, 3px, 0);
+    transform: translate(0px, 0px) scale(1);
   }
-  5% {
-    clip: rect(12px, 9999px, 48px, 0);
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
   }
-  10% {
-    clip: rect(47px, 9999px, 33px, 0);
-  }
-  15% {
-    clip: rect(47px, 9999px, 36px, 0);
-  }
-  20% {
-    clip: rect(30px, 9999px, 16px, 0);
-  }
-  25% {
-    clip: rect(27px, 9999px, 30px, 0);
-  }
-  30% {
-    clip: rect(31px, 9999px, 39px, 0);
-  }
-  35% {
-    clip: rect(10px, 9999px, 14px, 0);
-  }
-  40% {
-    clip: rect(32px, 9999px, 29px, 0);
-  }
-  45% {
-    clip: rect(47px, 9999px, 16px, 0);
-  }
-  50% {
-    clip: rect(47px, 9999px, 38px, 0);
-  }
-  55% {
-    clip: rect(48px, 9999px, 48px, 0);
-  }
-  60% {
-    clip: rect(36px, 9999px, 33px, 0);
-  }
-  65% {
-    clip: rect(49px, 9999px, 44px, 0);
-  }
-  70% {
-    clip: rect(22px, 9999px, 25px, 0);
-  }
-  75% {
-    clip: rect(16px, 9999px, 41px, 0);
-  }
-  80% {
-    clip: rect(27px, 9999px, 9px, 0);
-  }
-  85% {
-    clip: rect(37px, 9999px, 34px, 0);
-  }
-  90% {
-    clip: rect(35px, 9999px, 44px, 0);
-  }
-  95% {
-    clip: rect(1px, 9999px, 3px, 0);
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
   }
   100% {
-    clip: rect(33px, 9999px, 24px, 0);
+    transform: translate(0px, 0px) scale(1);
   }
+}
+
+.animate-blob {
+  animation: animate-blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }
 </style>
